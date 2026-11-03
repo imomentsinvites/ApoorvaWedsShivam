@@ -1,6 +1,6 @@
 export const WEDDING_DATA = {
-  groom: "Apoorva",
-  bride: "Shivam",
+  groom: "Shivam",
+  bride: "Apoorva",
   groomParents: "",
   brideParents: "",
   introMessage: "With the blessings of our family,\nwe invite you to celebrate",

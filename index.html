@@ -15,15 +15,15 @@
 
   <style>
     :root {
-      --paper: #fff7f3;
-      --paper-deep: #f8e9e5;
-      --rose: #b85e79;
-      --rose-dark: #843d58;
+      --paper: #fff8f5;
+      --paper-deep: #f2dfe2;
+      --rose: #c47791;
+      --rose-dark: #88465e;
       --rose-soft: #d99aaa;
-      --gold: #b58b52;
-      --gold-light: #e7d0a8;
+      --gold: #c2a06a;
+      --gold-light: #f0dfbd;
       --ink: #493337;
-      --muted: #80696b;
+      --muted: #8d737a;
       --glass: rgba(255,255,255,.68);
       --shadow: 0 18px 55px rgba(89,48,56,.12);
       --radius: 26px;
@@ -68,7 +68,7 @@
     }
 
     /* Opening video */
-    .hero { height: 100svh; min-height: 560px; padding: 0; color: #fff8f1; background: #4c3038; overflow: hidden; }
+    .hero { height: 100svh; min-height: 560px; padding: 0; color: #fff8f1; background: #4c3038 url('assets/opening-poster.jpg') center / cover no-repeat; overflow: hidden; }
     .hero video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; z-index: -2; }
     .hero:after {
       content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
@@ -116,7 +116,7 @@
     .scratch-card {
       position: relative; width: min(650px, 92vw); aspect-ratio: 1.62 / 1;
       margin: 28px auto 0; overflow: hidden; border-radius: 28px;
-      background: linear-gradient(135deg, #f5d9dd, #c77e91 55%, #a95470);
+      background: linear-gradient(135deg, #f8e7e8, #d5a4b2 45%, #b87991 75%, #e5c9a1);
       box-shadow: 0 22px 55px rgba(126,57,79,.22); touch-action: none;
     }
     .scratch-card:before {
@@ -139,10 +139,10 @@
 
     /* Countdown */
     .countdown { text-align: center; }
-    .countdown-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; max-width: 760px; margin: 30px auto 0; }
-    .timebox { padding: 22px 8px; border-radius: 20px; background: rgba(255,255,255,.64); box-shadow: var(--shadow); }
+    .countdown-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; max-width: 800px; margin: 30px auto 0; padding: 18px; border: 1px solid rgba(194,160,106,.38); border-radius: 32px; background: rgba(255,255,255,.38); }
+    .timebox { padding: 20px 8px 16px; border-radius: 18px; background: linear-gradient(160deg, rgba(255,255,255,.85), rgba(248,231,234,.65)); border: 1px solid rgba(194,160,106,.22); box-shadow: 0 8px 25px rgba(116,65,82,.07); }
     .timebox strong { display: block; color: var(--rose-dark); font: 600 clamp(2.3rem, 7vw, 4rem) "Cormorant Garamond", serif; }
-    .timebox span { color: var(--muted); font-size: .62rem; letter-spacing: .17em; text-transform: uppercase; }
+    .timebox span { color: var(--gold); font-size: .62rem; letter-spacing: .17em; text-transform: uppercase; }
     #countdownDone { display: none; color: var(--rose-dark); font: 2rem "Cormorant Garamond", serif; margin-top: 28px; }
 
     /* Event image cards — image-only, no border, portrait 9:16 */
@@ -191,6 +191,23 @@
     .reveal-on-scroll { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
     .reveal-on-scroll.visible { opacity: 1; transform: translateY(0); }
 
+
+    .scratch-burst { position:absolute; inset:0; overflow:hidden; pointer-events:none; z-index:4; }
+    .scratch-burst span { position:absolute; color:#c2a06a; font-size:clamp(1.2rem,3vw,2rem); text-shadow:0 0 12px rgba(255,255,255,.85); animation:petalBurst 1.65s ease-out var(--delay) forwards; }
+    @keyframes petalBurst { 0% { opacity:0; transform:translate(0,0) scale(.25) rotate(0deg); } 15% { opacity:1; } 100% { opacity:0; transform:translate(var(--dx),var(--dy)) scale(1.1) rotate(220deg); } }
+    .rsvp-panel { border:1px solid rgba(194,160,106,.34); background:linear-gradient(145deg,rgba(255,255,255,.84),rgba(250,231,235,.72)); }
+    .rsvp-form { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; text-align:left; margin-top:28px; }
+    .rsvp-form label { color:var(--rose-dark); font-size:.75rem; letter-spacing:.05em; display:flex; flex-direction:column; gap:8px; }
+    .rsvp-form label.full { grid-column:1/-1; }
+    .rsvp-form input,.rsvp-form select,.rsvp-form textarea { width:100%; padding:13px 14px; border:1px solid rgba(194,160,106,.35); border-radius:14px; color:var(--ink); background:rgba(255,255,255,.78); outline:none; }
+    .rsvp-form input:focus,.rsvp-form select:focus,.rsvp-form textarea:focus { border-color:var(--rose); box-shadow:0 0 0 3px rgba(196,119,145,.12); }
+    .rsvp-form .button { grid-column:1/-1; justify-self:center; }
+    .rsvp-actions { margin-top:20px; padding-top:20px; border-top:1px solid rgba(194,160,106,.25); }
+    .rsvp-note { font-size:.78rem; margin-top:12px; }
+    .venues-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+    .detail-card { border:1px solid rgba(194,160,106,.24); background:rgba(255,255,255,.62); }
+    @media(max-width:720px) { .rsvp-form,.venues-grid { grid-template-columns:1fr; } .rsvp-form label.full { grid-column:auto; } .countdown-grid { padding:10px; border-radius:24px; } .timebox { padding:16px 5px 12px; } }
+
     @media (max-width: 720px) {
       .section { padding: 72px 17px; }
       .invitation { padding-top: 76px; }
@@ -216,12 +233,12 @@
     1) Put your opening video at assets/opening-video.mp4
     2) Put event posters (1080x1920 / 9:16) in assets/events/
     4) Add wedding music at assets/wedding-music.mp3 (optional)
-    5) Replace RSVP_FORM_URL in the CONFIG block at the bottom with your Google Form URL.
+    5) RSVP is set up with the WhatsApp group flow and contact number.
   -->
 
   <main>
     <section class="section hero" id="home" aria-label="Wedding invitation opening">
-      <video id="introVideo" muted playsinline preload="auto" poster="assets/opening-poster.jpg">
+      <video id="introVideo" muted playsinline preload="none" poster="assets/opening-poster.jpg">
         <source src="assets/opening-video.mp4" type="video/mp4">
       </video>
       <button class="open-prompt" id="openPrompt" type="button" aria-label="Open wedding invitation">
@@ -229,21 +246,7 @@
       </button>
       <div class="scroll-cue" id="scrollCue">SCROLL TO BEGIN <span>⌄</span></div>
     </section>
-
-    <section class="section invitation soft-section" id="invite">
-      <div class="content reveal-on-scroll">
-        <div class="eyebrow">Together with our families</div>
-        <p class="date-line">We invite you to celebrate our happily ever after</p>
-        <div class="names">Apoorva</div>
-        <div class="weds">W E D S</div>
-        <div class="names" style="margin-top:0">Shivam</div>
-        <div class="ornament">✿</div>
-        <p class="invite-note">With love in our hearts and joy in our families, we would be delighted to have you with us as we begin this beautiful new chapter.</p>
-        <p class="date-line" style="margin-top:24px">24 November 2026</p>
-      </div>
-    </section>
-
-    <section class="section scratch-section" id="date">
+<section class="section scratch-section" id="date">
       <div class="content reveal-on-scroll">
         <div class="scratch-intro">
           <div class="eyebrow">A little surprise awaits</div>
@@ -295,79 +298,61 @@
             <div class="event-image-wrap">
               <img src="assets/events/event-01.jpg" alt="Event one invitation" loading="lazy">
             </div>
-            <div class="event-caption">
-              <h3>Event One</h3>
-              <p class="event-time">Date · Time to be added</p>
-              <p>Event venue details will be shared here.</p>
-            </div>
-          </article>
+</article>
           <article class="event-item reveal-on-scroll">
             <div class="event-image-wrap">
               <img src="assets/events/event-02.jpg" alt="Event two invitation" loading="lazy">
             </div>
-            <div class="event-caption">
-              <h3>Event Two</h3>
-              <p class="event-time">Date · Time to be added</p>
-              <p>Event venue details will be shared here.</p>
-            </div>
-          </article>
+</article>
           <article class="event-item reveal-on-scroll">
             <div class="event-image-wrap">
               <img src="assets/events/event-03.jpg" alt="Event three invitation" loading="lazy">
             </div>
-            <div class="event-caption">
-              <h3>Event Three</h3>
-              <p class="event-time">Date · Time to be added</p>
-              <p>Event venue details will be shared here.</p>
-            </div>
-          </article>
+</article>
           <article class="event-item reveal-on-scroll">
             <div class="event-image-wrap">
               <img src="assets/events/event-04.jpg" alt="Event four invitation" loading="lazy">
             </div>
-            <div class="event-caption">
-              <h3>Wedding Ceremony</h3>
-              <p class="event-time">24 November 2026 · Time to be added</p>
-              <p>Venue details will be shared here.</p>
-            </div>
-          </article>
+</article>
         </div>
       </div>
     </section>
 
 
-    <section class="section" id="rsvp">
+
+    <section class="section soft-section" id="rsvp">
       <div class="content">
         <div class="rsvp-panel glass reveal-on-scroll">
-          <div class="eyebrow">Kindly respond</div>
-          <h2 class="script">Will you join us?</h2>
-          <div class="ornament">✿</div>
-          <p>Your presence would mean the world to us. Please let us know if you'll be celebrating with us by submitting the RSVP form.</p>
-          <a class="button" id="rsvpButton" href="#" target="_blank" rel="noopener">Confirm your presence ↗</a>
-          <p id="rsvpNote" style="font-size:.76rem;margin-top:12px">The RSVP form link will be added here.</p>
+          <div class="eyebrow">Kindly respond</div><h2 class="script">Will you join us?</h2><div class="ornament">✿</div>
+          <p>Your presence would mean the world to us. Kindly share your RSVP below.</p>
+          <form id="rsvpForm" class="rsvp-form">
+            <label>Full name<input id="guestName" type="text" placeholder="Your name" required></label>
+            <label>WhatsApp number<input id="guestPhone" type="tel" placeholder="Your contact number" required></label>
+            <label>Number of guests<select id="guestCount"><option>1</option><option>2</option><option>3</option><option>4</option><option>5+</option></select></label>
+            <label>Will you be joining us?<select id="attendance"><option>Joyfully accepting</option><option>Regretfully declining</option><option>Not sure yet</option></select></label>
+            <label class="full">A note for the couple (optional)<textarea id="guestMessage" rows="3" placeholder="Write a little message…"></textarea></label>
+            <button class="button" type="submit">Prepare my RSVP message ✧</button>
+          </form>
+          <div id="rsvpActions" class="rsvp-actions" hidden>
+            <a class="button" href="https://chat.whatsapp.com/L0d7RsPztvt0SB1iKLtLAI?mode=gi_t" target="_blank" rel="noopener">Join WhatsApp Group ↗</a>
+            <button class="button secondary" id="copyRsvp" type="button">Copy RSVP Message</button>
+            <a class="button secondary" href="https://wa.me/919810438997" target="_blank" rel="noopener">WhatsApp 9810438997 ↗</a>
+            <p class="rsvp-note">After joining the group, return here, copy your prepared message, paste it in the group, and tap Send.</p>
+          </div>
         </div>
       </div>
     </section>
+
 
     <section class="section soft-section" id="details">
       <div class="content">
-        <div class="section-title reveal-on-scroll">
-          <div class="eyebrow">Plan your visit</div>
-          <h2 class="script">A few helpful details</h2>
-          <div class="ornament">♥</div>
-        </div>
-        <div class="details-grid">
-          <article class="detail-card glass reveal-on-scroll">
-            <div class="eyebrow">Wedding venue</div>
-            <h3>Venue details coming soon</h3>
-            <p>The venue name, address and map link will be added once finalised.</p>
-            <a class="button secondary" id="mapButton" href="#" target="_blank" rel="noopener" hidden>Open in Maps ↗</a>
-          </article>
-          <article class="detail-card glass reveal-on-scroll">
-            <div class="eyebrow">Need assistance?</div>
-            <h3>We're happy to help</h3>
-            <p>Contact details for travel and event queries can be added here.</p>
-          </article>
+        <div class="section-title reveal-on-scroll"><div class="eyebrow">Plan your visit</div><h2 class="script">Our celebration venues</h2><div class="ornament">♥</div>
+          <p class="intro-copy">We look forward to welcoming you to these beautiful locations in Pitampura.</p></div>
+        <div class="details-grid venues-grid">
+          <article class="detail-card glass reveal-on-scroll"><div class="eyebrow">Venue one</div><h3>Satsang Bhawan</h3><p>Pundrik Vihar, Pitampura</p><a class="button secondary" href="https://www.google.com/maps/search/?api=1&query=Satsang+Bhawan+Pundrik+Vihar+Pitampura" target="_blank" rel="noopener">Open in Maps ↗</a></article>
+          <article class="detail-card glass reveal-on-scroll"><div class="eyebrow">Venue two</div><h3>City Park Hotel</h3><p>3rd Floor, Pitampura</p><a class="button secondary" href="https://www.google.com/maps/search/?api=1&query=City+Park+Hotel+Pitampura" target="_blank" rel="noopener">Open in Maps ↗</a></article>
+          <article class="detail-card glass reveal-on-scroll"><div class="eyebrow">Venue three</div><h3>Rajmahal Hall</h3><p>City Park Hotel, Pitampura</p><a class="button secondary" href="https://www.google.com/maps/search/?api=1&query=Rajmahal+Hall+City+Park+Hotel+Pitampura" target="_blank" rel="noopener">Open in Maps ↗</a></article>
+          <article class="detail-card glass reveal-on-scroll"><div class="eyebrow">Need assistance?</div><h3>We're happy to help</h3><p>For wedding and venue queries, reach us on WhatsApp.</p><a class="button secondary" href="https://wa.me/919810438997" target="_blank" rel="noopener">WhatsApp 9810438997 ↗</a></article>
         </div>
       </div>
     </section>
@@ -384,7 +369,7 @@
   </main>
 
   <nav class="bottom-nav" aria-label="Page navigation">
-    <a href="#invite">Invite</a>
+    <a href="#home">Home</a>
     <a href="#date">Date</a>
     <a href="#events">Events</a>
     <a href="#rsvp">RSVP</a>
@@ -401,8 +386,7 @@
       weddingDate: "2026-11-24T00:00:00+05:30",
       openingVideo: "assets/opening-video.mp4",
       musicFile: "assets/wedding-music.mp3", // optional
-      googleFormUrl: "", // Paste your Google Form responder URL here
-      venueMapUrl: ""    // Optional: paste a Google Maps link here
+      // RSVP and venue map actions are configured directly in their sections
     };
 
     // Opening video: starts after the visitor taps, avoiding autoplay audio restrictions.
@@ -471,11 +455,10 @@
       const rect = canvas.getBoundingClientRect();
       const x = event.clientX - rect.left, y = event.clientY - rect.top;
       ctx.globalCompositeOperation = "destination-out";
-      ctx.lineCap = "round"; ctx.lineJoin = "round"; ctx.lineWidth = 48;
+      ctx.lineCap = "round"; ctx.lineJoin = "round"; ctx.lineWidth = 58;
       if (last) {
         ctx.beginPath(); ctx.moveTo(last.x, last.y); ctx.lineTo(x, y); ctx.stroke();
       }
-      ctx.beginPath(); ctx.arc(x, y, 24, 0, Math.PI * 2); ctx.fill();
       last = { x, y };
       if (performance.now() - lastCheck > 180) { lastCheck = performance.now(); checkScratch(); }
     }
@@ -488,6 +471,7 @@
       }
       if (transparent / samples > .42) {
         revealed = true;
+        launchScratchCelebration();
         canvas.style.transition = "opacity .45s ease";
         canvas.style.opacity = "0";
         canvas.style.pointerEvents = "none";
@@ -510,7 +494,40 @@
     window.addEventListener("resize", () => { if (!revealed) paintScratchLayer(); });
     paintScratchLayer();
 
-    // RSVP opens the Google Form responder link. Google Forms can save responses to a linked Sheet.
+
+    // RSVP form prepares a message for the WhatsApp group flow.
+    const rsvpForm = document.getElementById("rsvpForm");
+    const rsvpActions = document.getElementById("rsvpActions");
+    let preparedRsvpMessage = "";
+    rsvpForm.addEventListener("submit", event => {
+      event.preventDefault();
+      const name = document.getElementById("guestName").value.trim();
+      const phone = document.getElementById("guestPhone").value.trim();
+      const count = document.getElementById("guestCount").value;
+      const attendance = document.getElementById("attendance").value;
+      const note = document.getElementById("guestMessage").value.trim();
+      preparedRsvpMessage = `Wedding RSVP — Apoorva & Shivam\\nName: ${name}\\nWhatsApp: ${phone}\\nGuests: ${count}\\nResponse: ${attendance}${note ? `\\nMessage: ${note}` : ""}`;
+      rsvpActions.hidden = false;
+      rsvpActions.scrollIntoView({behavior:"smooth",block:"nearest"});
+    });
+    document.getElementById("copyRsvp").addEventListener("click", async () => {
+      try { await navigator.clipboard.writeText(preparedRsvpMessage); const b=document.getElementById("copyRsvp"); b.textContent="Copied! Paste in WhatsApp ✓"; setTimeout(()=>b.textContent="Copy RSVP Message",2200); }
+      catch { window.prompt("Copy your RSVP message:",preparedRsvpMessage); }
+    });
+
+    function launchScratchCelebration() {
+      const glyphs=["✿","✧","❀","✦","❁","♡"];
+      const burst=document.createElement("div"); burst.className="scratch-burst"; burst.setAttribute("aria-hidden","true"); card.appendChild(burst);
+      for(let i=0;i<34;i++){
+        const particle=document.createElement("span"); particle.textContent=glyphs[Math.floor(Math.random()*glyphs.length)];
+        const angle=Math.random()*Math.PI*2, distance=70+Math.random()*190;
+        particle.style.setProperty("--dx",`${Math.cos(angle)*distance}px`); particle.style.setProperty("--dy",`${Math.sin(angle)*distance}px`);
+        particle.style.setProperty("--delay",`${Math.random()*260}ms`); particle.style.left=`${42+Math.random()*16}%`; particle.style.top=`${42+Math.random()*16}%`; burst.appendChild(particle);
+      }
+      setTimeout(()=>burst.remove(),2200);
+    }
+
+    // RSVP is handled by the WhatsApp RSVP form flow.
     const rsvpButton = document.getElementById("rsvpButton");
     const rsvpNote = document.getElementById("rsvpNote");
     if (CONFIG.googleFormUrl.trim()) {

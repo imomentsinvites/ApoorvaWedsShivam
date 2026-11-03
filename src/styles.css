@@ -5744,3 +5744,16 @@ html, body {
   .welcome-frame { padding-left:14px; padding-right:14px; }
   .welcome-luxe-section { padding-left:14px; padding-right:14px; }
 }
+
+
+/* Final scratch-card proportions: a generous landscape rectangle with soft corners. */
+.scratch-section > div { max-width: 640px; }
+.scratch-card-rectangle {
+  border-radius: 26px;
+  border: 2px solid #c69a69;
+  box-shadow: inset 0 0 0 6px rgba(255,245,237,.42), 0 18px 38px rgba(90,20,38,.16);
+}
+.scratch-card-rectangle canvas { border-radius: 23px; touch-action: none; }
+@media (max-width: 480px) {
+  .scratch-section > div { max-width: 100%; }
+}

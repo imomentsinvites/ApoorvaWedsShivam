@@ -3,7 +3,7 @@ export const WEDDING_DATA = {
   bride: "Apoorva",
   groomParents: "",
   brideParents: "",
-  introMessage: "With love and blessings, we invite you to celebrate",
+  introMessage: "With love and blessings",
   withText: "&",
   togetherText: "",
   requestText: "REQUEST THE HONOUR OF YOUR PRESENCE",

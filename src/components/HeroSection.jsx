@@ -124,81 +124,31 @@ export function HeroSection({ isVideoPlaying, onStartPlayback, onOpeningEnded })
           />
         </div>
 
-        {/* 4. Groom Name in 'Great Vibes' */}
+        {/* Couple names on one line */}
         <h1
-          className="font-normal"
+          className="font-normal whitespace-nowrap"
           style={{
             fontFamily: "'Great Vibes', 'Dancing Script', cursive",
             color: "#f5e6e0",
-            fontSize: "clamp(2.6rem, 9.5vw, 3.6rem)",
-            lineHeight: 1.1,
-            paddingTop: "0.2rem",
+            fontSize: "clamp(2.35rem, 8.2vw, 3.8rem)",
+            lineHeight: 1.15,
             textShadow: "0 2px 14px rgba(0,0,0,0.75)",
           }}
         >
-          {WEDDING_DATA.groom}
+          Apoorva &amp; Shivam
         </h1>
-
-        {/* Groom Parents */}
-        {WEDDING_DATA.groomParents && (
-          <p
-            className="mt-0.5 mb-1.5 font-display tracking-wide"
-            style={{
-              fontFamily: "'Cormorant Garamond', 'Playfair Display', serif",
-              color: "rgba(245, 230, 224, 0.92)",
-              fontSize: "clamp(0.9rem, 3.2vw, 1.08rem)",
-              letterSpacing: "0.025em",
-              textShadow: "0 2px 10px rgba(0,0,0,0.8)",
-              fontWeight: 500,
-            }}
-          >
-            {WEDDING_DATA.groomParents}
-          </p>
-        )}
-
-        {/* 5. With in 'Great Vibes' */}
         <p
-          className="my-0.5"
+          className="mt-2 tracking-[0.22em] uppercase"
           style={{
-            fontFamily: "'Great Vibes', 'Dancing Script', cursive",
-            color: "rgba(245,230,224,0.85)",
-            fontSize: "clamp(20px, 5vw, 25px)",
-            textShadow: "0 2px 10px rgba(0,0,0,0.6)",
+            fontFamily: "'Cormorant Garamond', 'Playfair Display', serif",
+            color: "#f1d2a9",
+            fontSize: "clamp(0.78rem, 2.8vw, 0.98rem)",
+            fontWeight: 600,
+            textShadow: "0 2px 10px rgba(0,0,0,0.8)",
           }}
         >
-          {WEDDING_DATA.withText || "With"}
+          #ApoorvakaShivam
         </p>
-
-        {/* 6. Bride Name in 'Great Vibes' */}
-        <h1
-          className="leading-none font-normal"
-          style={{
-            fontFamily: "'Great Vibes', 'Dancing Script', cursive",
-            color: "#f5e6e0",
-            fontSize: "clamp(2.6rem, 9.5vw, 3.6rem)",
-            lineHeight: 1.1,
-            textShadow: "0 2px 14px rgba(0,0,0,0.75)",
-          }}
-        >
-          {WEDDING_DATA.bride}
-        </h1>
-
-        {/* Bride Parents */}
-        {WEDDING_DATA.brideParents && (
-          <p
-            className="mt-0.5 font-display tracking-wide"
-            style={{
-              fontFamily: "'Cormorant Garamond', 'Playfair Display', serif",
-              color: "rgba(245, 230, 224, 0.92)",
-              fontSize: "clamp(0.9rem, 3.2vw, 1.08rem)",
-              letterSpacing: "0.025em",
-              textShadow: "0 2px 10px rgba(0,0,0,0.8)",
-              fontWeight: 500,
-            }}
-          >
-            {WEDDING_DATA.brideParents}
-          </p>
-        )}
       </div>
 
       {/* Unopened hint at bottom of envelope screen */}

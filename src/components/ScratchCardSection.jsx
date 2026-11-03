@@ -150,8 +150,11 @@ export function ScratchCardSection() {
 
         {/* Heart Scratch Container with Prominent Silhouette, Drop Shadow & Golden Border */}
         <div
-          className="relative mx-auto aspect-[5/4] w-full max-w-[450px] my-7"
+          className="relative mx-auto w-full max-w-[560px] my-8"
           style={{
+            aspectRatio: "1.48 / 1",
+            minHeight: "290px",
+            maxHeight: "410px",
             filter: "drop-shadow(0 14px 28px rgba(90, 20, 38, 0.28))",
           }}
         >

@@ -13,10 +13,15 @@ import { WEDDING_DATA } from "./constants/weddingData";
 
 export default function App() {
   const audioRef = useRef(null);
+  const unlockTimerRef = useRef(null);
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const [openingFinished, setOpeningFinished] = useState(false);
   const [playingMusic, setPlayingMusic] = useState(false);
   const assetBase = import.meta.env.BASE_URL;
+
+  useEffect(() => () => {
+    if (unlockTimerRef.current) clearTimeout(unlockTimerRef.current);
+  }, []);
 
   useEffect(() => {
     const previousHtmlOverflow = document.documentElement.style.overflow;
@@ -34,7 +39,16 @@ export default function App() {
     };
   }, [openingFinished]);
 
+  const handleOpeningEnded = () => {
+    if (unlockTimerRef.current) clearTimeout(unlockTimerRef.current);
+    setOpeningFinished(true);
+  };
+
   const handleStartPlayback = () => {
+    if (!isVideoPlaying && !openingFinished) {
+      // Let guests begin scrolling five seconds after the opening video starts.
+      unlockTimerRef.current = setTimeout(() => setOpeningFinished(true), 5000);
+    }
     setIsVideoPlaying(true);
     const audio = audioRef.current;
     if (audio) {
@@ -97,7 +111,7 @@ export default function App() {
         <HeroSection
           isVideoPlaying={isVideoPlaying}
           onStartPlayback={handleStartPlayback}
-          onOpeningEnded={() => setOpeningFinished(true)}
+          onOpeningEnded={handleOpeningEnded}
         />
 
         {/* 2. Welcome Message Section */}

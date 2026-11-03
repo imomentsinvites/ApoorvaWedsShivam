@@ -1,7 +1,7 @@
 export const WEDDING_DATA = {
   groom: "Shivam",
   bride: "Apoorva",
-  groomParents: "",
+  groomParents: "Mrs. Asha & Mr. Mukesh Moda",
   brideParents: "",
   introMessage: "With love and blessings",
   withText: "&",
@@ -38,7 +38,7 @@ export const WEDDING_DATA = {
       maps: "https://www.google.com/maps/search/?api=1&query=City+Park+Hotel+Pitampura+New+Delhi",
     },
   ],
-  welcomeMessage: "With the blessings of Mrs. Indumati Mohta W/o Lt. Mahabir Prasad Mohta, we cordially invite you to celebrate the Wedding Celebrations of their granddaughter Apoorva D/o Mrs. Pushpa & Mr. Arun Mohta with Shivam S/o Mrs. & Mr. Mohta.",
+  welcomeMessage: "With the blessings of Mrs. Indumati Mohta W/o Lt. Mahabir Prasad Mohta, we cordially invite you to celebrate the Wedding Celebrations of their granddaughter Apoorva D/o Mrs. Pushpa & Mr. Arun Mohta with Shivam S/o Mrs. Asha & Mr. Mukesh Moda.",
   whatsappNumber: "+91 80102 16885",
   whatsappRawNumber: "918010216885",
   brideFamily: [

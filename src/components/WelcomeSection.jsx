@@ -37,7 +37,7 @@ export function WelcomeSection() {
         <p className="welcome-parent-line">D/o Mrs. Pushpa &amp; Mr. Arun Mohta</p>
         <div className="welcome-with"><span /> with <span /></div>
         <h3 className="welcome-couple">Shivam</h3>
-        <p className="welcome-parent-line">S/o Mrs. &amp; Mr. Mohta</p>
+        <p className="welcome-parent-line">S/o Mrs. Asha &amp; Mr. Mukesh Moda</p>
         <div className="luxe-ornament welcome-bottom-ornament"><span /> <HeartIcon size={14} /> <span /></div>
         <p className="welcome-closing">Your presence will make our celebrations even more special</p>
       </div>

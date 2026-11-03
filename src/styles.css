@@ -5757,3 +5757,12 @@ html, body {
 @media (max-width: 480px) {
   .scratch-section > div { max-width: 100%; }
 }
+
+
+/* Compact, balanced invitation scratch card proportions */
+.scratch-section > div { max-width: 430px; }
+.scratch-section .scratch-card-rectangle { border-radius: 22px; }
+.scratch-section .scratch-card-rectangle canvas { border-radius: 19px; }
+@media (max-width: 480px) {
+  .scratch-section > div { max-width: 100%; }
+}

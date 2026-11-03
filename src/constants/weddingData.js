@@ -3,7 +3,7 @@ export const WEDDING_DATA = {
   bride: "Apoorva",
   groomParents: "",
   brideParents: "",
-  introMessage: "With the blessings of our family,\nwe invite you to celebrate",
+  introMessage: "With love and blessings, we invite you to celebrate",
   withText: "&",
   togetherText: "",
   requestText: "REQUEST THE HONOUR OF YOUR PRESENCE",
@@ -20,7 +20,7 @@ export const WEDDING_DATA = {
       id: "22-nov",
       date: "22 November 2026",
       name: "Pundrik Vihar, Pitampura",
-      address: "Pundrik Vihar, Pitampura, New Delhi",
+      address: "Satsang & Mehendi · Pitampura, New Delhi",
       maps: "https://www.google.com/maps/search/?api=1&query=Pundrik+Vihar+Pitampura+New+Delhi",
     },
     {
@@ -38,7 +38,7 @@ export const WEDDING_DATA = {
       maps: "https://www.google.com/maps/search/?api=1&query=City+Park+Hotel+Pitampura+New+Delhi",
     },
   ],
-  welcomeMessage: "With immense joy and the blessings of our loved ones,\nwe invite you to be part of our celebrations.",
+  welcomeMessage: "With the blessings of Mrs. Indumati Mohta W/o Lt. Mahabir Prasad Mohta, we cordially invite you to celebrate the Wedding Celebrations of their granddaughter Apoorva D/o Mrs. Pushpa & Mr. Arun Mohta with Shivam S/o Mrs. & Mr. Mohta.",
   whatsappNumber: "+91 80102 16885",
   whatsappRawNumber: "918010216885",
   brideFamily: [

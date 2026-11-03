@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { DamaskPatternBackground } from "./components/common/Icons";
 import { MusicControl } from "./components/MusicControl";
 import { HeroSection } from "./components/HeroSection";
@@ -7,15 +7,32 @@ import { ScratchCardSection } from "./components/ScratchCardSection";
 import { CountdownSection } from "./components/CountdownSection";
 import { TimelineSection } from "./components/TimelineSection";
 import { VenueSection } from "./components/VenueSection";
-import { BlessingsSection } from "./components/BlessingsSection";
+import { RSVPSection } from "./components/RSVPSection";
 import { FooterSection } from "./components/FooterSection";
 import { WEDDING_DATA } from "./constants/weddingData";
 
 export default function App() {
   const audioRef = useRef(null);
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+  const [openingFinished, setOpeningFinished] = useState(false);
   const [playingMusic, setPlayingMusic] = useState(false);
   const assetBase = import.meta.env.BASE_URL;
+
+  useEffect(() => {
+    const previousHtmlOverflow = document.documentElement.style.overflow;
+    const previousBodyOverflow = document.body.style.overflow;
+    if (!openingFinished) {
+      document.documentElement.style.overflow = "hidden";
+      document.body.style.overflow = "hidden";
+    } else {
+      document.documentElement.style.overflow = previousHtmlOverflow;
+      document.body.style.overflow = previousBodyOverflow;
+    }
+    return () => {
+      document.documentElement.style.overflow = previousHtmlOverflow;
+      document.body.style.overflow = previousBodyOverflow;
+    };
+  }, [openingFinished]);
 
   const handleStartPlayback = () => {
     setIsVideoPlaying(true);
@@ -29,7 +46,7 @@ export default function App() {
   };
 
   return (
-    <div className="desktop-ambient-backdrop">
+    <div className={`desktop-ambient-backdrop ${openingFinished ? "opening-unlocked" : "opening-locked"}`}>
       {/* Background Audio Tag */}
       <audio ref={audioRef} loop preload="auto" src={`${assetBase}music/track1.mp3`} />
 
@@ -72,7 +89,7 @@ export default function App() {
       </div>
 
       {/* Mobile Frame Container (Strictly Mobile Viewport on every screen, matching photo) */}
-      <main className="mobile-phone-frame">
+      <main className={`mobile-phone-frame ${openingFinished ? "opening-unlocked" : "opening-locked"}`}>
         {/* Damask Texture Overlay inside the invitation */}
         <DamaskPatternBackground />
 
@@ -80,6 +97,7 @@ export default function App() {
         <HeroSection
           isVideoPlaying={isVideoPlaying}
           onStartPlayback={handleStartPlayback}
+          onOpeningEnded={() => setOpeningFinished(true)}
         />
 
         {/* 2. Welcome Message Section */}
@@ -97,10 +115,10 @@ export default function App() {
         {/* 6. Venue & Google Maps Section */}
         <VenueSection />
 
-        {/* 7. Gifts & Blessings Section */}
-        <BlessingsSection />
+        {/* RSVP form replaces the former elders' blessings slide */}
+        <RSVPSection />
 
-        {/* 8. Footer & End Message Section */}
+        {/* Footer & End Message Section */}
         <FooterSection />
       </main>
 

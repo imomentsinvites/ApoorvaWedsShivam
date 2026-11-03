@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import { HeartIcon } from "./common/Icons";
 import { WEDDING_DATA } from "../constants/weddingData";
 
-export function HeroSection({ isVideoPlaying, onStartPlayback }) {
+export function HeroSection({ isVideoPlaying, onStartPlayback, onOpeningEnded }) {
   const videoRef = useRef(null);
   const [showOverlay, setShowOverlay] = useState(false);
   const assetBase = import.meta.env.BASE_URL;
@@ -38,6 +38,7 @@ export function HeroSection({ isVideoPlaying, onStartPlayback }) {
 
   const handleOpeningEnded = () => {
     setShowOverlay(true);
+    if (onOpeningEnded) onOpeningEnded();
     const video = videoRef.current;
     if (video) {
       video.src = `${assetBase}assets/background.mp4`;

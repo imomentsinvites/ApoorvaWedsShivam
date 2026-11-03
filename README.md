@@ -1,6 +1,6 @@
 # Apoorva & Shivam — Wedding Invitation
 
-A React + Vite wedding invitation website, styled in rose pink and champagne gold. The original opening video, poster, background video and music are retained.
+A React + Vite wedding invitation website, styled in rose pink and champagne gold. The original opening video, poster, background video and music are retained. The invitation includes an enlarged scratch-to-reveal date card, a family invitation welcome slide, a scroll-guided venue pearl, and a WhatsApp RSVP form.
 
 ## Run locally
 
@@ -46,4 +46,4 @@ The gallery displays them in that order, in rounded rectangular frames. Text sho
 
 ## Personalisation
 
-Wedding names, dates, venue links, RSVP number and family details are configured in `src/constants/weddingData.js`.
+Wedding names, dates, venue links and RSVP number are configured in `src/constants/weddingData.js`. The RSVP form sends Guest Name, Phone Number, Number of Guests, Attendance and Message to the supplied WhatsApp number.

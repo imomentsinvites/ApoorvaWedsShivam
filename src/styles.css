@@ -5616,3 +5616,131 @@ html, body {
 .luxe-footer { background:#f7e7eb; border-color:rgba(190,148,105,.35); }
 .scratch-card-rectangle { border-radius:22px; border:2px solid #c69a69; box-shadow:inset 0 0 0 5px rgba(255,245,237,.35); }
 .scratch-card-rectangle canvas { border-radius:20px; }
+
+/* Invitation refinements: cinematic welcome, accessible scratch card and venue journey */
+.desktop-ambient-backdrop.opening-locked { height:100vh !important; min-height:100vh !important; overflow:hidden !important; }
+.mobile-phone-frame.opening-locked { overflow-y: hidden !important; }
+@media (min-width: 768px) {
+  .desktop-ambient-backdrop.opening-locked { height:100vh !important; min-height:100vh !important; overflow:hidden !important; }
+.mobile-phone-frame.opening-locked { overflow-y: hidden !important; }
+}
+
+.welcome-luxe-section {
+  isolation: isolate;
+  min-height: 690px;
+  display: flex;
+  align-items: center;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(255,232,218,.24), transparent 42%),
+    radial-gradient(ellipse at 10% 85%, rgba(232,184,173,.18), transparent 35%),
+    linear-gradient(145deg, #4d2439 0%, #7b4058 42%, #a8667a 72%, #572b42 100%);
+}
+.welcome-luxe-section::before,
+.welcome-luxe-section::after {
+  content: "";
+  position: absolute;
+  inset: 18px;
+  border: 1px solid rgba(239,207,166,.34);
+  border-radius: 48% 48% 18px 18px;
+  pointer-events: none;
+  z-index: -1;
+}
+.welcome-luxe-section::after {
+  inset: 27px;
+  border-color: rgba(255,244,230,.14);
+  border-radius: 46% 46% 13px 13px;
+}
+.welcome-glow {
+  position: absolute;
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+  filter: blur(2px);
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(255,224,190,.2), rgba(255,224,190,0) 70%);
+  animation: welcome-glow-float 7s ease-in-out infinite alternate;
+}
+.welcome-glow-one { top: 4%; left: -70px; }
+.welcome-glow-two { bottom: 5%; right: -75px; animation-delay: -3s; }
+@keyframes welcome-glow-float { from { transform: translateY(-8px) scale(.9); opacity:.55; } to { transform: translateY(18px) scale(1.12); opacity:1; } }
+.welcome-frame {
+  width: 100%;
+  padding: 34px 22px 30px;
+  border: 1px solid rgba(237,205,163,.48);
+  border-radius: 48% 48% 22px 22px / 15% 15% 22px 22px;
+  background: linear-gradient(180deg, rgba(255,245,237,.075), rgba(255,245,237,.025));
+  box-shadow: 0 20px 65px rgba(35,10,24,.2), inset 0 0 35px rgba(255,235,219,.045);
+  opacity:0;
+  transform:translateY(34px) scale(.985);
+}
+.welcome-frame.welcome-entered { animation: welcome-arrive 1.4s cubic-bezier(.2,.75,.25,1) both; }
+@keyframes welcome-arrive { from { opacity:0; transform:translateY(34px) scale(.985); } to { opacity:1; transform:translateY(0) scale(1); } }
+.welcome-topline { color:#e9c99f; font:600 9px 'Cinzel',serif; letter-spacing:.25em; text-transform:uppercase; margin-bottom:22px; }
+.welcome-blessing { color:#f8e7dc; font:italic 18px 'Cormorant Garamond',serif; letter-spacing:.06em; margin:17px 0 3px; }
+.welcome-elder { color:#fff4e9; font:500 clamp(24px,6vw,31px) 'Playfair Display',serif; }
+.welcome-relation { color:#e9c99f; font:italic 15px 'Cormorant Garamond',serif; margin-top:2px; }
+.welcome-invite { color:#fff0e6; font:italic 700 18px 'Cormorant Garamond',serif; margin-top:24px; }
+.welcome-celebration { color:#f1d2a9; font:700 clamp(25px,6.5vw,34px) 'Cinzel',serif; letter-spacing:.035em; margin-top:3px; text-shadow:0 3px 18px rgba(0,0,0,.2); }
+.welcome-granddaughter { color:#fff0e6; font:italic 700 16px 'Cormorant Garamond',serif; margin-top:4px; }
+.welcome-couple { color:#fff1e7; font:400 clamp(43px,11vw,58px)/1.1 'Great Vibes',cursive; margin-top:8px; text-shadow:0 3px 16px rgba(0,0,0,.25); }
+.welcome-parent-line { color:#edcfb6; font:italic 15px 'Cormorant Garamond',serif; margin-top:1px; }
+.welcome-with { display:flex; align-items:center; justify-content:center; gap:12px; color:#e9c99f; font:italic 19px 'Cormorant Garamond',serif; margin:7px 0 1px; }
+.welcome-with span { width:35px; height:1px; background:linear-gradient(90deg,transparent,#d8b486); }
+.welcome-with span:last-child { transform:scaleX(-1); }
+.welcome-bottom-ornament { margin-top:25px; }
+.welcome-closing { color:#e9cdbd; font:italic 15px 'Cormorant Garamond',serif; margin-top:13px; }
+
+.scratch-section > div { max-width: 490px; }
+.scratch-section canvas { cursor:crosshair; }
+.scratch-card-rectangle { border-radius:24px; border:2px solid #c69a69; box-shadow:inset 0 0 0 6px rgba(255,245,237,.42), 0 18px 38px rgba(90,20,38,.16); }
+.scratch-card-rectangle canvas { border-radius:21px; touch-action:none; }
+
+.venue-journey { position:relative; margin-top:26px; padding-left:23px; }
+.venue-journey-track {
+  position:absolute;
+  left:8px;
+  top:12px;
+  bottom:12px;
+  width:2px;
+  border-radius:5px;
+  background:linear-gradient(180deg,rgba(197,139,158,.2),rgba(197,139,158,.8),rgba(197,139,158,.2));
+}
+.venue-journey-track span {
+  position:absolute;
+  left:50%;
+  top:var(--journey-progress, 0%);
+  width:15px;
+  height:15px;
+  border-radius:50%;
+  transform:translate(-50%,-50%);
+  background:radial-gradient(circle at 30% 25%,#fff 0%,#fff5ef 28%,#e8c6ce 62%,#b77b90 100%);
+  border:1px solid rgba(190,148,105,.7);
+  box-shadow:0 0 0 4px rgba(255,250,247,.7),0 0 17px rgba(183,123,144,.85);
+  transition:top .12s linear;
+}
+.venue-luxe-list { margin-top:0; gap:17px; }
+.venue-luxe-card { margin-left:0; }
+.venue-events { display:block; color:#986b79; font:italic 14px 'Cormorant Garamond',serif; margin:0 0 6px; }
+
+.rsvp-intro { color:#805d68; font:italic 17px 'Cormorant Garamond',serif; margin:10px 0 19px; }
+.rsvp-form { display:grid; gap:13px; padding:20px 17px; text-align:left; border-radius:22px; border:1px solid rgba(190,148,105,.55); background:rgba(255,255,255,.72); box-shadow:0 12px 32px rgba(123,59,79,.08); }
+.rsvp-field { display:grid; gap:6px; }
+.rsvp-field > span { color:#85566a; font:600 10px 'Cinzel',serif; letter-spacing:.12em; text-transform:uppercase; }
+.rsvp-field input, .rsvp-field select, .rsvp-field textarea {
+  width:100%;
+  min-height:44px;
+  padding:11px 12px;
+  border:1px solid rgba(166,111,129,.28);
+  border-radius:10px;
+  outline:none;
+  background:rgba(255,252,250,.95);
+  color:#62404d;
+  font:14px 'Cormorant Garamond',serif;
+}
+.rsvp-field textarea { resize:vertical; min-height:82px; }
+.rsvp-field input:focus, .rsvp-field select:focus, .rsvp-field textarea:focus { border-color:#b77b90; box-shadow:0 0 0 3px rgba(183,123,144,.12); }
+.rsvp-submit { margin-top:5px; max-width:none !important; }
+@media (max-width: 380px) {
+  .welcome-frame { padding-left:14px; padding-right:14px; }
+  .welcome-luxe-section { padding-left:14px; padding-right:14px; }
+}

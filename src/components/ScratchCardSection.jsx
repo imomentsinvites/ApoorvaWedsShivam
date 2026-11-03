@@ -88,8 +88,10 @@ export function ScratchCardSection() {
 
   const handlePointerDown = (e) => {
     if (scratched) return;
+    e.preventDefault();
     drawingRef.current = true;
     lastPointRef.current = getPoint(e);
+    if (e.currentTarget.setPointerCapture) e.currentTarget.setPointerCapture(e.pointerId);
   };
 
   const handlePointerMove = (e) => {
@@ -103,7 +105,7 @@ export function ScratchCardSection() {
     if (!currentPoint) return;
 
     ctx.globalCompositeOperation = "destination-out";
-    ctx.lineWidth = 52;
+    ctx.lineWidth = Math.max(54, canvas.offsetWidth * 0.16);
     ctx.lineCap = "round";
     ctx.lineJoin = "round";
 
@@ -114,7 +116,7 @@ export function ScratchCardSection() {
       ctx.stroke();
     } else {
       ctx.beginPath();
-      ctx.arc(currentPoint.x, currentPoint.y, 22, 0, Math.PI * 2);
+      ctx.arc(currentPoint.x, currentPoint.y, Math.max(27, canvas.offsetWidth * 0.08), 0, Math.PI * 2);
       ctx.fill();
     }
     lastPointRef.current = currentPoint;
@@ -139,8 +141,8 @@ export function ScratchCardSection() {
   };
 
   return (
-    <section className="py-16 md:py-24 px-6 cream-bg relative text-center">
-      <div className="max-w-md mx-auto">
+    <section className="scratch-section py-16 md:py-24 px-3 cream-bg relative text-center">
+      <div className="max-w-lg mx-auto">
         <h2 className="font-calligraphy text-4xl md:text-5xl text-primary mb-2">
           {scratched ? "Our Forever Begins" : "Scratch to Reveal"}
         </h2>
@@ -148,7 +150,7 @@ export function ScratchCardSection() {
 
         {/* Heart Scratch Container with Prominent Silhouette, Drop Shadow & Golden Border */}
         <div
-          className="relative mx-auto aspect-[4/3] w-full max-w-[340px] my-6"
+          className="relative mx-auto aspect-[5/4] w-full max-w-[450px] my-7"
           style={{
             filter: "drop-shadow(0 14px 28px rgba(90, 20, 38, 0.28))",
           }}
@@ -254,13 +256,11 @@ export function ScratchCardSection() {
               <canvas
                 ref={canvasRef}
                 className="absolute inset-0 w-full h-full cursor-pointer touch-none z-10"
-                onMouseDown={handlePointerDown}
-                onMouseMove={handlePointerMove}
-                onMouseUp={handlePointerUp}
-                onMouseLeave={handlePointerUp}
-                onTouchStart={handlePointerDown}
-                onTouchMove={handlePointerMove}
-                onTouchEnd={handlePointerUp}
+                onPointerDown={handlePointerDown}
+                onPointerMove={handlePointerMove}
+                onPointerUp={handlePointerUp}
+                onPointerCancel={handlePointerUp}
+                onLostPointerCapture={handlePointerUp}
               />
             )}
           </div>
